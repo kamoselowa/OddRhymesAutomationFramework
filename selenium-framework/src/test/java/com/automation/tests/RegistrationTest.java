@@ -1,5 +1,8 @@
 package com.automation.tests;
 
-public class RegistrationTest {
+import com.automation.basetest.BaseTest;
 
+public class RegistrationTest extends BaseTest{
+  
+    
 }

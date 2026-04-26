@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class BasePase {
+public class BasePage {
 
     protected WebDriver driver;
 
@@ -22,7 +22,12 @@ public class BasePase {
         return driver;
     }
         public void quitDriver(){
-            driver.quit();
+            if(driver== null){
+                driver.quit();
+            }
         }
+        
+        
+        
          
 }
