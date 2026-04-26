@@ -8,8 +8,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class BasePage {
 
     protected WebDriver driver;
+    public BasePage(WebDriver driver){
+            this.driver = driver;
+
+        }
 
     public WebDriver getDriver(String browser){
+        
         if (browser.equalsIgnoreCase("chrome")){
             driver = new ChromeDriver();
         }
@@ -22,11 +27,8 @@ public class BasePage {
         return driver;
     }
         public void quitDriver(){
-            if(driver== null){
-                driver.quit();
-            }
+            quitDriver();
         }
-        
         
         
          
