@@ -20,7 +20,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void BaseSetup(){
-        basePage = new BasePage();
+        basePage = new BasePage(driver);
         driver = basePage.getDriver(configReader.getBrowser());
         configReader = new ConfigReader();
         driver.get(configReader.getUrl());

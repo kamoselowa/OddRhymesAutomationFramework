@@ -28,7 +28,8 @@ public class ConfigReader {
         return prop.getProperty("BROWSER");
 
     }
-    public String getGlobalWait(){
-        Long.parseLong(prop.getProperty("GLOBALWAIT"));
-    }
+    public Long getGlobalWait(){
+        return Long.parseLong(prop.getProperty("GLOBALWAIT"));
+}
+    
 }   

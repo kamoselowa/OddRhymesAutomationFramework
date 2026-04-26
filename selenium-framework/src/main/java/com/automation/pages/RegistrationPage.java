@@ -9,6 +9,12 @@ import com.automation.base.BasePage;
 
 public class RegistrationPage extends BasePage {
 
+    }
+
+    public RegistrationPage() {
+        //TODO Auto-generated constructor stub
+    }
+
     private WebDriver driver;
 
     @FindBy(how = How.ID,using = "username")

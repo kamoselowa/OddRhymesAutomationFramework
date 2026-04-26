@@ -22,4 +22,5 @@ public class SignInPage extends BasePage {
     @FindBy(how = How.XPATH,using="//a[normalize-space()='Learn more about us']")
     WebElement LearnMore;
     
+    
 }
