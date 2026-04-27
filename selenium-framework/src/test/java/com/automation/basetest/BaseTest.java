@@ -17,17 +17,18 @@ public class BaseTest {
     public SignInPage signInPage;
     public ConfigReader configReader; 
 
+@BeforeMethod
+public void BaseSetup() {
+    configReader = new ConfigReader(); // ✅ initialize first
 
-    @BeforeMethod
-    public void BaseSetup(){
-        basePage = new BasePage(driver);
-        driver = basePage.getDriver(configReader.getBrowser());
-        configReader = new ConfigReader();
-        driver.get(configReader.getUrl());
-        registrationPage = new RegistrationPage();
-        SignInPage signInPage = new SignInPage();
+    basePage = new BasePage(driver); // ✅ don't pass driver yet (or redesign constructor)
+    driver = basePage.getDriver(configReader.getBrowser()); // ✅ now safe
 
-    }
+    driver.get(configReader.getUrl());
+
+    registrationPage = new RegistrationPage(driver);
+    signInPage = new SignInPage(driver); // ✅ assign to class field
+}
     @AfterMethod
     public void closeBrowser(){
         basePage.quitDriver();

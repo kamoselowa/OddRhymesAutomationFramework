@@ -9,9 +9,11 @@ import com.automation.base.BasePage;
 
 public class RegistrationPage extends BasePage {
 
-    }
+    
 
-    public RegistrationPage() {
+
+    public RegistrationPage(WebDriver driver) {
+        super(driver);
         //TODO Auto-generated constructor stub
     }
 
@@ -30,6 +32,6 @@ public class RegistrationPage extends BasePage {
     WebElement CreateAccountBtn;
 
    
-
+    
 
 }

@@ -4,6 +4,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -21,7 +22,7 @@ public class BasePage {
             this.driver = driver;
             configReader = new ConfigReader();
             PageFactory.initElements(driver, this);
-            this.wait = new Customwait(driver,Duration.ofSeconds(configReader.getGlobalWait()))
+            this.wait = new CustomWait(driver,Duration.ofSeconds(configReader.getGlobalWait()));
 
         }
         
@@ -29,13 +30,18 @@ public class BasePage {
     public WebDriver getDriver(String browser){
         
         if (browser.equalsIgnoreCase("chrome")){
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--incognito");
+            driver = new ChromeDriver(options);
+            driver.manage().window().maximize();
         }
         else if(browser.equalsIgnoreCase("firefox")){
             driver = new FirefoxDriver();
+            driver.manage().window().maximize();
         }
         else{
             driver = new EdgeDriver();
+            driver.manage().window().maximize();
         }
         return driver;
     }
