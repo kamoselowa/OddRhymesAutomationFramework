@@ -28,23 +28,21 @@ public class SignInTest extends BaseTest {
     // ✅ Verify page title
     @Test(priority = 3)
     public void verifyTitle() {
-        Assert.assertTrue(signInPage.isPageTitleDisplayed(),
+        Assert.assertTrue(signInPage.isPageLoaded(),
                 "Page title is not displayed");
 
         Assert.assertEquals(signInPage.getPageTitleText(),
                 "Odd Rhymes",
                 "Page title text mismatch");
-    }
-
-    // ✅ Verify logo (low priority UI check)
-    @Test(priority = 3)
-    public void verifyLogo() {
-        Assert.assertTrue(signInPage.isLogoDisplayed(),
+            //low priority UI LOgo Check
+          Assert.assertTrue(signInPage.isPageLoaded(),
                 "Logo is not displayed");
     }
 
+ 
+
     // ✅ Valid login test
-    @Test(priority = 2)
+    @Test(priority = 1, description = "L-01")
     public void validLoginTest() {
         signInPage.login("test@mail.com", "Password123");
 
@@ -54,7 +52,7 @@ public class SignInTest extends BaseTest {
     }
 
     // ❌ Invalid login
-    @Test(priority = 1)
+    @Test(priority = 1, description = "L-04")
     public void invalidLoginTest() {
         signInPage.login("wrong@mail.com", "wrongpass");
 

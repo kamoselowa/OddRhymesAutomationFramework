@@ -31,6 +31,8 @@ public class RegistrationPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//span[@class='ng-tns-c712066932-2 ng-star-inserted']")
     WebElement CreateAccountBtn;
 
+
+    public void 
    
     
 

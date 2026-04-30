@@ -8,64 +8,112 @@ import org.openqa.selenium.support.How;
 import com.automation.base.BasePage;
 
 public class SignInPage extends BasePage {
+
     public SignInPage(WebDriver driver) {
         super(driver);
-        //TODO Auto-generated constructor stub
     }
 
-    private WebDriver driver;
-    
+    @FindBy(how = How.ID, using = "email")
+    WebElement emailEntry;
 
-    @FindBy(how = How.ID,using = "email")
-    WebElement EmailEntry;
-    
-    @FindBy(how = How.ID,using = "password")
-    WebElement PasswordEntry;
+    @FindBy(how = How.ID, using = "password")
+    WebElement passwordEntry;
 
-    @FindBy(how = How.XPATH,using="//button[normalize-space()='Forgot password?']")
-    WebElement ForgotPassword;
+    @FindBy(how = How.XPATH, using = "//button[@type='submit']")
+    WebElement signInButton;
 
-    @FindBy(how = How.XPATH,using="//a[normalize-space()='Learn more about us']")
-    WebElement LearnMore;
+    @FindBy(how = How.XPATH, using = "//button[normalize-space()='Forgot password?']")
+    WebElement forgotPassword;
 
-
-    @FindBy(how = How.XPATH,using ="//div[@class='logo-badge ng-tns-c2439698414-2']")
-    WebElement Logo;
+    @FindBy(how = How.XPATH, using = "//a[normalize-space()='Learn more about us']")
+    WebElement learnMore;
 
     @FindBy(how = How.XPATH, using = "//h1[normalize-space()='Odd Rhymes']")
-    WebElement PageTitle;
+    WebElement pageTitle;
 
-    public void PageTitle(){
-        PageTitle.isDisplayed()
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'logo-badge')]")
+    WebElement logo;
+
+    // 👉 dynamic quote (adjust locator!)
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'quote')]")
+    WebElement quoteText;
+
+    // 👉 example error message
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'error')]")
+    WebElement errorMessage;
+
+    // ===== PAGE VALIDATION =====
+
+    public boolean isPageLoaded( ) {
+        return pageTitle.isDisplayed() && logo.isDisplayed() ;
     }
 
-    public void Logo(){
-        Logo.isDisplayed();
-        
-
+    public String getPageTitleText() {
+        return pageTitle.getText();
     }
 
-    public void RegistredUserEmail(){
+    // ===== INPUT ACTIONS =====
 
+    public void enterEmail(String email) {
+        emailEntry.clear();
+        emailEntry.sendKeys(email);
     }
-    public void ValidPassword(){
 
+    public void enterPassword(String password) {
+        passwordEntry.clear();
+        passwordEntry.sendKeys(password);
     }
-    public void UnRegisteredEmail(){
 
+    public void clickSignIn() {
+        signInButton.click();
     }
-    public void InvalidPassword(){
 
+    public void login(String email, String password) {
+        enterEmail(email);
+        enterPassword(password);
+        clickSignIn();
     }
-    public void WeakPassword(){
 
-    }
-    public void EmptyPasswordFiled(){
+    // ===== LINK ACTIONS =====
 
+    public void clickForgotPassword() {
+        forgotPassword.click();
     }
-    public void InvalidEmailFormat(){
-        
+
+    public void clickLearnMore() {
+        learnMore.click();
     }
-    
-    
+
+    // ===== VALIDATIONS =====
+
+    public String getErrorMessage() {
+        return errorMessage.getText();
+    }
+
+    public boolean isErrorDisplayed() {
+        return errorMessage.isDisplayed();
+    }
+
+    // ===== DYNAMIC CONTENT =====
+
+    public String getQuoteText() {
+        return quoteText.getText();
+    }
+
+    public boolean isQuoteNotEmpty() {
+        return !quoteText.getText().trim().isEmpty();
+    }
+
+    public boolean doesQuoteChange() {
+        String first = quoteText.getText();
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        String second = quoteText.getText();
+        return !first.equals(second);
+    }
 }
