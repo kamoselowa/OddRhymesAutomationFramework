@@ -39,8 +39,8 @@ public class SignInPage extends BasePage {
     WebElement quoteText;
 
     // 👉 example error message
-    @FindBy(how = How.XPATH, using = "//div[contains(@class,'error')]")
-    WebElement errorMessage;
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'error-message')]")
+    WebElement EmailerrorMessage;
 
     // ===== PAGE VALIDATION =====
 
@@ -86,14 +86,17 @@ public class SignInPage extends BasePage {
 
     // ===== VALIDATIONS =====
 
-    public String getErrorMessage() {
-        return errorMessage.getText();
-    }
+public String getEmailErrorMessage() {
+    return EmailerrorMessage.getText();
+}
 
-    public boolean isErrorDisplayed() {
-        return errorMessage.isDisplayed();
+public boolean isEmailErrorDisplayed() {
+    try {
+        return EmailerrorMessage.isDisplayed();
+    } catch (Exception e) {
+        return false;
     }
-
+}
     // ===== DYNAMIC CONTENT =====
 
     public String getQuoteText() {

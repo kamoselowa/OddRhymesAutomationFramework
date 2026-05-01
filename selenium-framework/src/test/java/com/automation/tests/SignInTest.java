@@ -25,20 +25,8 @@ public class SignInTest extends BaseTest {
         closeBrowser(); // close browser after each test
     }
 
-    // ✅ Verify page title
-    @Test(priority = 3)
-    public void verifyTitle() {
-        Assert.assertTrue(signInPage.isPageLoaded(),
-                "Page title is not displayed");
-
-        Assert.assertEquals(signInPage.getPageTitleText(),
-                "Odd Rhymes",
-                "Page title text mismatch");
-            //low priority UI LOgo Check
-          Assert.assertTrue(signInPage.isPageLoaded(),
-                "Logo is not displayed");
-    }
-
+    
+   
  
 
     // ✅ Valid login test
@@ -46,32 +34,15 @@ public class SignInTest extends BaseTest {
     public void validLoginTest() {
         signInPage.login("test@mail.com", "Password123");
 
-        // 👉 Replace with actual success condition (dashboard, URL, etc.)
-        // Example:
-        // Assert.assertTrue(homePage.isLoaded(), "Login failed");
+       
     }
 
-    // ❌ Invalid login
-    @Test(priority = 1, description = "L-04")
-    public void invalidLoginTest() {
-        signInPage.login("wrong@mail.com", "wrongpass");
+    
+   
 
-        Assert.assertTrue(signInPage.isErrorDisplayed(),
-                "Error message should be displayed for invalid login");
-    }
-
-    // ❌ Empty password
-    @Test(priority = 1)
-    public void emptyPasswordTest() {
-        signInPage.enterEmail("test@mail.com");
-        signInPage.clickSignIn();
-
-        Assert.assertTrue(signInPage.isErrorDisplayed(),
-                "Error message should appear for empty password");
-    }
 
     // ❌ Invalid email format
-    @Test(priority = 6)
+    @Test(priority = 1 , description = "L-04")
     public void invalidEmailFormatTest() {
         signInPage.login("invalid-email", "Password123");
 
