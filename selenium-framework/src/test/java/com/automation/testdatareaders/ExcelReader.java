@@ -12,17 +12,30 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ExcelReader {
     private String filePath;
 
-    public ExcelReader(String filePath){
-        public List<String>getFieldNamesFromExcel(String sheetName) throws IOException{
-            List<String> fieldName = new ArrayList<>();
-            try {
-                FileInputStream fileiInputStream = new FileInputStream(filePath);
-                XSSFWorkbook workbook = new XSSFWorkbook(fileiInputStream);
-                Sheet 
-            } catch (Exception e) {
-                // TODO: handle exception
-            }
+  public ExcelReader(String filepath){
+    this.filePath = filepath;
+  }
+  public List<String> getFielNameFromExcel(String SheetName) throws IOException{
+    List<String> fileNames = new ArrayList<>();
+    try {
+        FileInputStream fileInputStream = new FileInputStream(filePath);
+        XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
+        Sheet sheet = workbook.getSheet(sheetName);
+        int rows = sheet.getphysicalNumberOfRows();
+        for (int row = 1 ; row< rows; row++){
+            fieldNames.add(sheet.getRow(row).getCell(0).getSringCellValue());
+        }
+        workbook.close();
+        fileInputStream.close();
+    } catch (Exception e) {
+        System.err.println("IOEXception occured while reading this file" + e.getMessage());
+    }catch(Exception e){
+        System.err.println("An unexpeceted error has occured" + e.getMessage());
+        e.printStackTrace();
+    }
+    return fileNames;
+
         }
     }
-
-}
+        
+    
