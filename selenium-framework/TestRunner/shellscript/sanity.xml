@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DOCTYPE suite System "http://testng.org/testng-1.0.dtd">
+<<<<<<< HEAD
+<suite name ="OddRhymes_sanity_suite">
+    <test thread-count ="5" name ="Test">
+        <classes>
+            <class name ="com"/>
+            <class name ="com"/>
+        <classes>
+    </test>
+</suite>
+=======
+<test thread-count="5" name-"Test">
+    <classes>
+        <class name =""
+>>>>>>> 40fe2f5 (running tests)
