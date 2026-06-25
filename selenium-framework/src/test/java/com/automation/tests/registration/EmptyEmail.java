@@ -21,5 +21,4 @@ public class EmptyEmail extends BaseTest {
     public void TearEmptyAcc(){
         closeBrowser();
     }
-
-}
+    

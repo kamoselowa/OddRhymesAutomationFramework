@@ -9,11 +9,17 @@ public class InvalidCredentials extends BaseTest{
     @BeforeMethod
     public void InvalidSetup(){
         BaseSetup();
+        
 
     }
+
+    
     @Test(priority = 1, description = "L-04")
     public void InvalidUser(){
         
+        
     }
+
+
 
 }

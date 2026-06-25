@@ -1,5 +1,7 @@
 package com.automation.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -128,4 +130,33 @@ public boolean isEmailErrorDisplayed() {
         String second = quoteText.getText();
         return !first.equals(second);
     }
+
+	public boolean verifyPresenceOfElementsOnPage(List<String> fieldNames) {
+		boolean result = true;
+		int count = 0;
+		for (String fieldName : fieldNames) {
+			WebElement element = getElementByFieldName(fieldName);
+
+			if (element == null) {
+				System.out.println(
+						"Element is null, so please make sure you have added corresponding WebElement for this field in excel: "
+								+ fieldName);
+				continue;
+			}
+
+			if (wait.getElementPresentState() == true) {
+				if (element.isDisplayed() == true) {
+					System.out.println(fieldName + " is present on the page.");
+				}
+			} else {
+				System.out.println(fieldName + " is not present on the page.");
+				count++;
+			}
+		}
+		if (count != 0) {
+			result = false;
+		}
+		return result;
+	}
+
 }

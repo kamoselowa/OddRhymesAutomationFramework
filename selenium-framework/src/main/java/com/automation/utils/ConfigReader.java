@@ -28,6 +28,10 @@ public class ConfigReader {
     public String getBrowser() {
         return prop.getProperty("BROWSER");
     }
+    public String getFieldsVerificationExcelName() {
+		
+		return prop.getProperty("FIELDS_VERIFICATION_EXCEL");
+    }
 
     public Long getGlobalWaitValue() {
         return Long.parseLong(prop.getProperty("GLOBALWAIT"));
