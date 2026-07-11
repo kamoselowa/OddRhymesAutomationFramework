@@ -1,5 +1,5 @@
-package com.automation.pages;
 
+package com.automation.pages;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -130,6 +130,7 @@ public boolean isEmailErrorDisplayed() {
         String second = quoteText.getText();
         return !first.equals(second);
     }
+    
 
 	public boolean verifyPresenceOfElementsOnPage(List<String> fieldNames) {
 		boolean result = true;
@@ -140,7 +141,7 @@ public boolean isEmailErrorDisplayed() {
 			if (element == null) {
 				System.out.println(
 						"Element is null, so please make sure you have added corresponding WebElement for this field in excel: "
-								+ fieldName);
+								+ fieldName + "in excel");
 				continue;
 			}
 
@@ -158,5 +159,42 @@ public boolean isEmailErrorDisplayed() {
 		}
 		return result;
 	}
+    private WebElement getElementByFieldName(String fieldName){
+        WebElement element = null;
+        try{
+            switch (fieldName.toLowerCase()) {
+                case "userName":
+                    getUserName();
+                    element = userName;
+                    break;
+            
+                case "password":
+                    getPassWord();
+                    element = password();
+                    break;
+
+                case "SignInbutton":
+                    getSignInButton();
+                    element = SigninButton;
+                    break;
+
+                case "forgotPassword":
+                    getForgotPasswordLink();
+                    element = forgotPassword;
+                    break;
+                case "createAccount":
+                    getCreateAccount();
+                    element = createAccount;
+                    break;
+                default:
+                    throw new IllegalArgumentException("Invalid field name: "+ fieldName);
+            }
+         }
+            catch(IllegalArgumentException ie){
+                System.out.println(ie.getMessage());
+            }
+            return element;
+        }
+    }
 
 }

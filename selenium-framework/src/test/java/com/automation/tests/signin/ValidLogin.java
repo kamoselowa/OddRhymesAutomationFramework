@@ -32,6 +32,11 @@ public class ValidLogin extends BaseTest {
 		Assert.assertTrue(signInPage.verifyPresenceOfElementsOnPage(fieldNames),
 				"Some elements are not present on the registration page.");
     }
+    @Test
+    public void fieldsOnthePageTest(){
+        List<String> fieldNames = excelReader.getFieldNamesFromExcel("SignInPage");
+        Assert.assertTrue(SignInPage.verifyPresenceOfElementsOnPage(fieldNames), "Some elements are not present on the signin page");
+    }
 
 
     @AfterMethod

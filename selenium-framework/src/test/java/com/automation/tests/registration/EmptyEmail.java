@@ -11,14 +11,17 @@ public class EmptyEmail extends BaseTest {
     public void SetupEmptyEmail(){
         BaseSetup();
 
+    }
+
     @Test
     public void BEFore(){
         
     }
 
-    }
+    
     @AfterMethod
     public void TearEmptyAcc(){
         closeBrowser();
     }
+}
     
