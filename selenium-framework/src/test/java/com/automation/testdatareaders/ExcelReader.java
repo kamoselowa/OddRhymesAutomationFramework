@@ -1,40 +1,54 @@
 package com.automation.testdatareaders;
 
-import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ExcelReader {
 
-	private String filePath;
+private String filePath;
 
-	public ExcelReader(String filePath) {
-		this.filePath = filePath;
-	}
+public ExcelReader(String filePath) {
+    this.filePath = filePath;
+}
 
-	public List<String> getFieldNamesFromExcel(String sheetName) throws IOException {
-		List<String> fieldNames = new ArrayList<>();
-		try {
-			FileInputStream fileInputStream = new FileInputStream(filePath);
-			XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
-			Sheet sheet = workbook.getSheet(sheetName);
-			int rows = sheet.getPhysicalNumberOfRows();
-			for (int row = 1; row < rows; row++) {
-				fieldNames.add(sheet.getRow(row).getCell(0).getStringCellValue());
-			}
-			workbook.close();
-			fileInputStream.close();
-		} catch (IOException e) {
-			System.err.println("IOException occurred while reading the Excel file: " + e.getMessage());
-			e.printStackTrace();
-		} catch (Exception e) {
-			System.err.println("An unexpected error occurred: " + e.getMessage());
-			e.printStackTrace();
-		}
-		return fieldNames;
-	}
+public Object[][] getLoginData(String sheetName) throws IOException {
+
+    try (FileInputStream fileInputStream = new FileInputStream(filePath);
+         Workbook workbook = new XSSFWorkbook(fileInputStream)) {
+
+        Sheet sheet = workbook.getSheet(sheetName);
+
+        if (sheet == null) {
+            throw new RuntimeException("Sheet not found: " + sheetName);
+        }
+
+        int rowCount = sheet.getPhysicalNumberOfRows();
+        int colCount = sheet.getRow(0).getPhysicalNumberOfCells();
+
+        Object[][] data = new Object[rowCount - 1][colCount];
+
+        for (int i = 1; i < rowCount; i++) {
+
+            Row row = sheet.getRow(i);
+
+            for (int j = 0; j < colCount; j++) {
+
+                if (row.getCell(j) != null) {
+                    data[i - 1][j] = row.getCell(j).toString();
+                } else {
+                    data[i - 1][j] = "";
+                }
+            }
+        }
+
+        return data;
+    }
+}
+
+
 }

@@ -145,55 +145,43 @@ public boolean isEmailErrorDisplayed() {
 				continue;
 			}
 
-			if (wait.getElementPresentState() == true) {
-				if (element.isDisplayed() == true) {
-					System.out.println(fieldName + " is present on the page.");
-				}
-			} else {
-				System.out.println(fieldName + " is not present on the page.");
-				count++;
-			}
+			try{
+                if (element.isDisplayed()){
+                    System.out.println(fieldName + "Is present on the page");
+                }
+            }
+			 catch(Exception e){
+                System.out.println(fieldNames + "is not present on the page");
+             }
 		}
 		if (count != 0) {
 			result = false;
 		}
 		return result;
 	}
-    private WebElement getElementByFieldName(String fieldName){
-        WebElement element = null;
-        try{
-            switch (fieldName.toLowerCase()) {
-                case "userName":
-                    getUserName();
-                    element = userName;
-                    break;
-            
-                case "password":
-                    getPassWord();
-                    element = password();
-                    break;
+   private WebElement getElementByFieldName(String fieldName) {
 
-                case "SignInbutton":
-                    getSignInButton();
-                    element = SigninButton;
-                    break;
+    switch (fieldName.toLowerCase()) {
 
-                case "forgotPassword":
-                    getForgotPasswordLink();
-                    element = forgotPassword;
-                    break;
-                case "createAccount":
-                    getCreateAccount();
-                    element = createAccount;
-                    break;
-                default:
-                    throw new IllegalArgumentException("Invalid field name: "+ fieldName);
-            }
-         }
-            catch(IllegalArgumentException ie){
-                System.out.println(ie.getMessage());
-            }
-            return element;
+        case "username":
+        case "email":
+            return emailEntry;
+
+        case "password":
+            return passwordEntry;
+
+        case "signinbutton":
+            return signInButton;
+
+        case "forgotpassword":
+            return forgotPassword;
+
+        case "createaccount":
+            return CreateAccount;
+
+        default:
+            System.out.println("Invalid field name: " + fieldName);
+            return null;
         }
     }
 
