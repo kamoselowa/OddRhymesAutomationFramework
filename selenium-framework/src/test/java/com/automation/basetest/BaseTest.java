@@ -31,7 +31,10 @@ public void BaseSetup() {
 
     registrationPage = new RegistrationPage(driver);
     signInPage = new SignInPage(driver); // ✅ assign to class field
-    excelReader = new ExcelReader("./src/test/resources/test-data"+ configReader.getFieldsVerificationExcelName());
+    excelReader = new ExcelReader(
+    "C:\\Users\\Kamogelo Selowa\\OneDrive - Dynamic DNA (PTY) LTD\\Desktop\\OddRhymesAutomationFrameworkOop\\selenium-framework\\src\\test\\java\\com\\automation\\Resources\\Configurations\\Test-Data\\"
+    + configReader.getFieldsVerificationExcelName()
+);
 }
     @AfterMethod
     public void closeBrowser(){
