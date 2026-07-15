@@ -1,4 +1,12 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
-    "java.compile.nullAnalysis.mode": "automatic"
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.jdt.ls.java.home": "C:\\Users\\Kamogelo.Selowa\\OneDrive - Dynamic DNA (PTY) LTD\\jdk-26_windows-x64_bin\\jdk-26.0.1\\bin",
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-26",
+            "path": "C:\\Users\\Kamogelo.Selowa\\OneDrive - Dynamic DNA (PTY) LTD\\jdk-26_windows-x64_bin\\jdk-26.0.1\\bin",
+            "default": true
+        }
+    ]
 }

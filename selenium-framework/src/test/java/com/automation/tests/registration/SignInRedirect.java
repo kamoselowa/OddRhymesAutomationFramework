@@ -11,7 +11,10 @@ public class SignInRedirect extends BaseTest {
     public void RedirectSetup(){
 
         BaseSetup();
+
+       
     }
+    
     @AfterMethod
     public void TearDownRedirect(){
         closeBrowser();

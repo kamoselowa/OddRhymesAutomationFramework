@@ -12,7 +12,7 @@ public class ConfigReader {
         prop = new Properties();
 
         String path = System.getProperty("user.dir")
-                + "\\src  \\test\\java\\com\\automation\\Resources\\Configurations\\config.properties";
+                + "\\src\\test\\java\\com\\automation\\Resources\\Configurations\\config.properties";
 
         try (FileInputStream fis = new FileInputStream(path)) {
             prop.load(fis);
