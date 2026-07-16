@@ -11,35 +11,34 @@ import com.automation.testdatareaders.ExcelReader;
 import com.automation.utils.ConfigReader;
 
 public class BaseTest {
-    
+
     public BasePage basePage;
     public WebDriver driver;
-    public  RegistrationPage registrationPage;
+    public RegistrationPage registrationPage;
     public SignInPage signInPage;
     public ConfigReader configReader;
     public ExcelReader excelReader;
 
-@BeforeMethod
-public void BaseSetup() {
-    configReader = new ConfigReader(); // ✅ initialize first
+    @BeforeMethod
+    public void BaseSetup() {
+        configReader = new ConfigReader(); // ✅ initialize first
 
-    basePage = new BasePage(driver); // ✅ don't pass driver yet (or redesign constructor)
-    driver = basePage.getDriver(configReader.getBrowser()); // ✅ now safe
+        basePage = new BasePage(driver); // ✅ don't pass driver yet (or redesign constructor)
+        driver = basePage.getDriver(configReader.getBrowser()); // ✅ now safe
 
+        driver.get(configReader.getUrl());
 
-    driver.get(configReader.getUrl());
+        registrationPage = new RegistrationPage(driver);
+        signInPage = new SignInPage(driver); // ✅ assign to class field
+        excelReader = new ExcelReader(
+                " ./src/test/java/com/automation/Resources/Configurations/Test-Data/"
+                        + configReader.getFieldsVerificationExcelName());
+    }
 
-    registrationPage = new RegistrationPage(driver);
-    signInPage = new SignInPage(driver); // ✅ assign to class field
-    excelReader = new ExcelReader(
-    "C:\\Users\\Kamogelo Selowa\\OneDrive - Dynamic DNA (PTY) LTD\\Desktop\\OddRhymesAutomationFrameworkOop\\selenium-framework\\src\\test\\java\\com\\automation\\Resources\\Configurations\\Test-Data\\"
-    + configReader.getFieldsVerificationExcelName()
-);
-}
     @AfterMethod
-    public void closeBrowser(){
+    public void closeBrowser() {
 
-    basePage.quitDriver();
+        basePage.quitDriver();
     }
 
 }

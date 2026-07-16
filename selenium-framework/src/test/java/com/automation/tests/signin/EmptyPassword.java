@@ -10,15 +10,16 @@ import com.automation.basetest.BaseTest;
 public class EmptyPassword extends BaseTest {
 
     @BeforeMethod
-    public void EmptyPassWordsetup(){
+    public void EmptyPassWordsetup() {
         BaseSetup();
 
     }
     // ❌ Empty password
-    
+
     @Test(priority = 1, description = "L-03")
-    public void EmptyPassword(){
-            signInPage.enterEmail(null);;
+    public void EmptyPassword() {
+        signInPage.enterEmail("");
+        ;
         // Click sign in without entering email
         signInPage.clickSignIn();
 
@@ -31,11 +32,10 @@ public class EmptyPassword extends BaseTest {
                 "Please fill in both fields.",
                 "Incorrect error message");
     }
+
     @AfterMethod
-    public void TeardownEmptyPass(){
+    public void TeardownEmptyPass() {
         closeBrowser();
     }
-
-
 
 }
