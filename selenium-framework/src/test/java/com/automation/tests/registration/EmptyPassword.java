@@ -4,6 +4,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import com.automation.basetest.BaseTest;
+import org.testng.annotations.Test;
 
 public class EmptyPassword extends BaseTest{
 
@@ -12,6 +13,7 @@ public class EmptyPassword extends BaseTest{
         BaseSetup();
 
     }
+    @Test
     @AfterMethod
     public void TearDownEmptypassWord(){
         closeBrowser();
