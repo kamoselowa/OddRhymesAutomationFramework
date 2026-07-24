@@ -16,6 +16,9 @@ public class SignInRedirect extends BaseTest {
        
     }
     @Test
+    public void NavigateToNextPage(){
+
+    }
     @AfterMethod
     public void TearDownRedirect(){
         closeBrowser();
