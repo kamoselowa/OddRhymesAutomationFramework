@@ -9,13 +9,9 @@ import com.automation.basetest.BaseTest;
 import com.automation.pages.SignInPage;
 
 public class EmptyEmail extends BaseTest {
-    @BeforeMethod
-    public void SetupEmptyEmail(){
-        BaseSetup();
-    }
-    // ❌ Empty Email Field
-    @Test(priority = 1 ,description = "L-02")
-    public void EmptyEmailError(){
+
+    @Test(priority = 1, description = "L-02")
+    public void EmptyEmailError() {
 
         signInPage.enterPassword("");
         // Click sign in without entering email
@@ -30,11 +26,6 @@ public class EmptyEmail extends BaseTest {
                 "Please fill in both fields.",
                 "Incorrect error message");
     }
-    
-    @AfterMethod
-    public void EmptyEmailTeardown(){
-        closeBrowser();
-    }
-}
 
+}
 

@@ -8,15 +8,7 @@ import com.automation.basetest.BaseTest;
 import com.automation.pages.SignInPage;
 
 public class ForgotPassword extends BaseTest {
-    SignInPage signInPage;
 
-    @BeforeMethod
-    public void ForgotPassSetup() {
-        BaseSetup();
-
-        signInPage = new SignInPage(driver);
-
-    }
 
     @Test
     public void ClickLink() {
@@ -31,7 +23,5 @@ public class ForgotPassword extends BaseTest {
 
     }
 
-    public void LinkTearDown() {
-        closeBrowser();
-    }
+
 }

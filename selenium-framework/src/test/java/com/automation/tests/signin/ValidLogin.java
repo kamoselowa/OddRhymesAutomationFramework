@@ -1,6 +1,8 @@
 package com.automation.tests.signin;
 
 
+import com.automation.utils.Customwait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -8,14 +10,9 @@ import org.testng.annotations.Test;
 import com.automation.basetest.BaseTest;
 import com.automation.dataproviders.ValidLoginTestDataProvider;
 
+import java.time.Duration;
+
 public class ValidLogin extends BaseTest {
-
-
-@BeforeMethod
-public void SetupValidLogin() {
-
-    BaseSetup();
-}
 
 @Test(
         priority = 1,
@@ -26,13 +23,14 @@ public void SetupValidLogin() {
 public void ValidLoginTest(String username, String password) {
 
     signInPage.login(username, password);
+    Customwait wait = new Customwait(driver, Duration.ofSeconds(10));
+    Assert.assertTrue(wait.waitForUrlContains("https://oddrhymes.com/profile/Seasonal_Lady!"),
+            "Login Failed for user" + username);
+
 }
 
-@AfterMethod
-public void TearDownValidLogin() {
 
-    closeBrowser();
-}
+
 
 
 }

@@ -27,20 +27,24 @@ public class ExcelReader {
                 throw new RuntimeException("Sheet not found: " + sheetName);
             }
 
-            int rowCount = sheet.getPhysicalNumberOfRows();
+            // Number of data rows (excluding header)
+            int totalRows = sheet.getPhysicalNumberOfRows() - 1;
 
-            // Only read Username and Password columns
-            Object[][] data = new Object[rowCount - 1][2];
+            // Read a maximum of 3 rows
+            int rowsToRead = Math.min(totalRows, 3);
 
-            for (int i = 1; i < rowCount; i++) {
+            // Only Username and Password columns
+            Object[][] data = new Object[rowsToRead][2];
+
+            for (int i = 1; i <= rowsToRead; i++) {
 
                 Row row = sheet.getRow(i);
 
-                data[i - 1][0] = row.getCell(0) != null
+                data[i - 1][0] = (row != null && row.getCell(0) != null)
                         ? row.getCell(0).toString()
                         : "";
 
-                data[i - 1][1] = row.getCell(1) != null
+                data[i - 1][1] = (row != null && row.getCell(1) != null)
                         ? row.getCell(1).toString()
                         : "";
             }

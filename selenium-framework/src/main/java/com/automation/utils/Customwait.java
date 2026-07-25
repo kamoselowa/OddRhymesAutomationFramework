@@ -13,13 +13,16 @@ public class Customwait {
     private WebDriver driver;
     private WebDriverWait wait;
 
+
+
     public Customwait(WebDriver driver ,Duration timeout){
         this.driver = driver;
         this.wait = new WebDriverWait(driver, timeout);
 
+
     }
 
-    public void waitForVisibilityOFElement(WebElement element){
+    public void  waitForElementVisible(WebElement element){
         try {
              wait.until(ExpectedConditions.visibilityOf(element));
         } catch (Exception e) {
@@ -36,4 +39,14 @@ public class Customwait {
          System.err.println("Element is not clicable : " + e.getMessage());
        }
     }
+    public boolean waitForUrlContains(String urlPart) {
+        try {
+            wait.until(ExpectedConditions.urlContains(urlPart));
+            return true;
+        } catch (Exception e) {
+            System.err.println("URL did not contain '" + urlPart + "'");
+            return false;
+        }
+    }
+
 }

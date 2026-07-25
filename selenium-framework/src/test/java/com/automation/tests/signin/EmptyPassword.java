@@ -9,11 +9,7 @@ import com.automation.basetest.BaseTest;
 
 public class EmptyPassword extends BaseTest {
 
-    @BeforeMethod
-    public void EmptyPassWordsetup() {
-        BaseSetup();
 
-    }
     // ❌ Empty password
 
     @Test(priority = 1, description = "L-03")
@@ -31,11 +27,6 @@ public class EmptyPassword extends BaseTest {
         Assert.assertEquals(signInPage.getEmailErrorMessage(),
                 "Please fill in both fields.",
                 "Incorrect error message");
-    }
-
-    @AfterMethod
-    public void TeardownEmptyPass() {
-        closeBrowser();
     }
 
 }

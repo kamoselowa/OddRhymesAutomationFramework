@@ -12,32 +12,20 @@ import com.automation.pages.SignInPage;
 
 public class VerifyTitle extends BaseTest {
 
-   
-    @BeforeMethod
-    public void SetupVerifyPage(){ 
-        BaseSetup();
-            
-    }
 
-    
     @Test(priority = 3)
-    public void verifyTitle(){
-        Assert.assertTrue(signInPage.isPageLoaded(), 
-        "Page title is not displayed" );
+    public void verifyTitle() {
+        Assert.assertTrue(signInPage.isPageLoaded(),
+                "Page title is not displayed");
 
         Assert.assertEquals(signInPage.getPageTitleText(),
                 "Odd Rhymes",
                 "Page title text mismatch");
-            //low priority UI LOgo Check
-          Assert.assertTrue(signInPage.isPageLoaded(),
+        //low priority UI LOgo Check
+        Assert.assertTrue(signInPage.isPageLoaded(),
                 "Logo is not displayed");
 
-       
-    }
-    
-    @AfterMethod
-    public void tearDownVerifyPage(){
-        closeBrowser();
+
     }
 
 }

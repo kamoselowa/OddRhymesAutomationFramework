@@ -1,5 +1,5 @@
-
 package com.automation.pages;
+
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -39,24 +39,20 @@ public class SignInPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//div[contains(@class,'logo-badge')]")
     WebElement logo;
 
-    // 👉 dynamic quote (adjust locator!)
     @FindBy(how = How.XPATH, using = "//div[contains(@class,'quote')]")
     WebElement quoteText;
 
-    // 👉 example error message
     @FindBy(how = How.XPATH, using = "//div[contains(@class,'error-message')]")
     WebElement EmailerrorMessage;
 
-
     // ===== PAGE VALIDATION =====
 
-    public void CreateAccount(){
-
+    public void CreateAccount() {
         CreateAccount.click();
     }
 
-    public boolean isPageLoaded( ) {
-        return pageTitle.isDisplayed() && logo.isDisplayed() ;
+    public boolean isPageLoaded() {
+        return pageTitle.isDisplayed() && logo.isDisplayed();
     }
 
     public String getPageTitleText() {
@@ -97,17 +93,25 @@ public class SignInPage extends BasePage {
 
     // ===== VALIDATIONS =====
 
-public String getEmailErrorMessage() {
-    return EmailerrorMessage.getText();
-}
-
-public boolean isEmailErrorDisplayed() {
-    try {
-        return EmailerrorMessage.isDisplayed();
-    } catch (Exception e) {
-        return false;
+    public String getEmailErrorMessage() {
+        return EmailerrorMessage.getText();
     }
-}
+
+    public boolean isEmailErrorDisplayed() {
+        try {
+            return EmailerrorMessage.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
+     * Returns the error message element for explicit waits.
+     */
+    public WebElement getEmailErrorElement() {
+        return EmailerrorMessage;
+    }
+
     // ===== DYNAMIC CONTENT =====
 
     public String getQuoteText() {
@@ -130,59 +134,63 @@ public boolean isEmailErrorDisplayed() {
         String second = quoteText.getText();
         return !first.equals(second);
     }
-    
 
-	public boolean verifyPresenceOfElementsOnPage(List<String> fieldNames) {
-		boolean result = true;
-		int count = 0;
-		for (String fieldName : fieldNames) {
-			WebElement element = getElementByFieldName(fieldName);
+    public boolean verifyPresenceOfElementsOnPage(List<String> fieldNames) {
 
-			if (element == null) {
-				System.out.println(
-						"Element is null, so please make sure you have added corresponding WebElement for this field in excel: "
-								+ fieldName + "in excel");
-				continue;
-			}
+        boolean result = true;
+        int count = 0;
 
-			try{
-                if (element.isDisplayed()){
-                    System.out.println(fieldName + "Is present on the page");
-                }
+        for (String fieldName : fieldNames) {
+
+            WebElement element = getElementByFieldName(fieldName);
+
+            if (element == null) {
+                System.out.println(
+                        "Element is null, so please make sure you have added corresponding WebElement for this field in excel: "
+                                + fieldName);
+                continue;
             }
-			 catch(Exception e){
-                System.out.println(fieldNames + "is not present on the page");
-             }
-		}
-		if (count != 0) {
-			result = false;
-		}
-		return result;
-	}
-   private WebElement getElementByFieldName(String fieldName) {
 
-    switch (fieldName.toLowerCase()) {
-
-        case "username":
-        case "email":
-            return emailEntry;
-
-        case "password":
-            return passwordEntry;
-
-        case "signinbutton":
-            return signInButton;
-
-        case "forgotpassword":
-            return forgotPassword;
-
-        case "createaccount":
-            return CreateAccount;
-
-        default:
-            System.out.println("Invalid field name: " + fieldName);
-            return null;
+            try {
+                if (element.isDisplayed()) {
+                    System.out.println(fieldName + " is present on the page");
+                }
+            } catch (Exception e) {
+                System.out.println(fieldName + " is not present on the page");
+                count++;
+            }
         }
+
+        if (count != 0) {
+            result = false;
+        }
+
+        return result;
     }
 
+    private WebElement getElementByFieldName(String fieldName) {
+
+        switch (fieldName.toLowerCase()) {
+
+            case "username":
+            case "email":
+                return emailEntry;
+
+            case "password":
+                return passwordEntry;
+
+            case "signinbutton":
+                return signInButton;
+
+            case "forgotpassword":
+                return forgotPassword;
+
+            case "createaccount":
+                return CreateAccount;
+
+            default:
+                System.out.println("Invalid field name: " + fieldName);
+                return null;
+        }
+    }
 }

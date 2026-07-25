@@ -64,27 +64,27 @@ public class RegistrationPage extends BasePage {
     // ==========================
 
     public WebElement getUserName() {
-        wait.waitForVisibilityOFElement(UserNameEntry);
+        wait. waitForElementVisible(UserNameEntry);
         return UserNameEntry;
     }
 
     public WebElement getEmail() {
-        wait.waitForVisibilityOFElement(EMailEntry);
+        wait. waitForElementVisible(EMailEntry);
         return EMailEntry;
     }
 
     public WebElement getPassWord() {
-        wait.waitForVisibilityOFElement(PasswordEntry);
+        wait. waitForElementVisible(PasswordEntry);
         return PasswordEntry;
     }
 
     public WebElement getSignIn() {
-        wait.waitForVisibilityOFElement(SignInBtn);
+        wait. waitForElementVisible(SignInBtn);
         return SignInBtn;
     }
 
     public WebElement getCreateBtnElement() {
-        wait.waitForVisibilityOFElement(CreateAccountBtn);
+        wait. waitForElementVisible(CreateAccountBtn);
         wait.WaitForElementToBeClickable(CreateAccountBtn);
         return CreateAccountBtn;
     }

@@ -11,11 +11,9 @@ import com.automation.pages.SignInPage;
 
 public class CreateAccountClick extends BaseTest{
     
-    @BeforeMethod
-    public void SetupCReateAccount(){
-        BaseSetup();
 
-    }
+
+
     @Test
     public void CreateAccountButton(){
 
@@ -29,11 +27,7 @@ public class CreateAccountClick extends BaseTest{
         assertEquals(expectedUrl, actualUrl);
 
     }
-    @AfterMethod
-    public void TearDownCreateAccount(){
-        closeBrowser();
-    }
-    
+
 
 
 }
