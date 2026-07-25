@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.automation.basetest.BaseTest;
-import com.automation.dataproviders.TestDataProvider;
+import com.automation.dataproviders.ValidLoginTestDataProvider;
 
 public class ValidLogin extends BaseTest {
 
@@ -21,7 +21,7 @@ public void SetupValidLogin() {
         priority = 1,
         description = "L-01",
         dataProvider = "loginData",
-        dataProviderClass = TestDataProvider.class
+        dataProviderClass = ValidLoginTestDataProvider.class
 )
 public void ValidLoginTest(String username, String password) {
 
@@ -31,7 +31,7 @@ public void ValidLoginTest(String username, String password) {
 @AfterMethod
 public void TearDownValidLogin() {
 
-    driver.quit();
+    closeBrowser();
 }
 
 

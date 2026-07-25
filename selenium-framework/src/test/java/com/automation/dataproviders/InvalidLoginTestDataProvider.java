@@ -1,12 +1,11 @@
 package com.automation.dataproviders;
 
-import java.io.IOException;
-
+import com.automation.testdatareaders.ExcelReader;
 import org.testng.annotations.DataProvider;
 
-import com.automation.testdatareaders.ExcelReader;
+import java.io.IOException;
 
-public class TestDataProvider {
+public class InvalidLoginTestDataProvider {
 
     @DataProvider(name = "loginData")
     public Object[][] loginData() throws IOException {
@@ -18,3 +17,4 @@ public class TestDataProvider {
         return excelReader.getLoginData("Login");
     }
 }
+
