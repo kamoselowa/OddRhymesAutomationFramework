@@ -1,28 +1,34 @@
 package com.automation.tests.registration;
 
+import com.automation.basetest.BaseTest;
+import com.automation.dataproviders.RegistrationDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import com.automation.basetest.BaseTest;
 
 public class EmptyEmail extends BaseTest {
 
     @Test(
             priority = 1,
-            description = "R-02 - Verify user cannot register with an empty email"
+            description = "R-02 - Verify user cannot register with an empty email",
+            dataProvider = "registrationData",
+            dataProviderClass = RegistrationDataProvider.class
     )
-    public void emptyEmailTest() {
+    public void emptyEmailTest(String username,
+                               String email,
+                               String password) {
+
+        // Navigate to Registration Page
         registrationPage.clickCreateAccount();
 
-        registrationPage.enterUsername("Kamogelo");
+        // Populate registration form using Excel data
+        registrationPage.enterUsername(username);
+        registrationPage.enterEmail(email);
+        registrationPage.enterPassword(password);
 
-        // Leave email empty
-        registrationPage.enterEmail("");
+        // Submit registration
+        registrationPage.clickCreateAccount();
 
-        registrationPage.enterPassword("Password123!");
-
-        //registrationPage.clickCreateAccount();
-
+        // Verify email field is invalid
         Assert.assertTrue(
                 registrationPage.isEmailFieldInvalid(),
                 "Email field should be marked as invalid."

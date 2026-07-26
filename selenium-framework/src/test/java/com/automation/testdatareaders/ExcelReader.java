@@ -10,11 +10,15 @@ import java.io.IOException;
 
 public class ExcelReader {
 
-    private String filePath;
+    private final String filePath;
 
     public ExcelReader(String filePath) {
         this.filePath = filePath;
     }
+
+    // ==========================
+    // Login Data
+    // ==========================
 
     public Object[][] getLoginData(String sheetName) throws IOException {
 
@@ -27,25 +31,60 @@ public class ExcelReader {
                 throw new RuntimeException("Sheet not found: " + sheetName);
             }
 
-            // Number of data rows (excluding header)
-            int totalRows = sheet.getPhysicalNumberOfRows() - 1;
+            int rowCount = sheet.getPhysicalNumberOfRows();
 
-            // Read a maximum of 3 rows
-            int rowsToRead = Math.min(totalRows, 3);
+            Object[][] data = new Object[rowCount - 1][2];
 
-            // Only Username and Password columns
-            Object[][] data = new Object[rowsToRead][2];
-
-            for (int i = 1; i <= rowsToRead; i++) {
+            for (int i = 1; i < rowCount; i++) {
 
                 Row row = sheet.getRow(i);
 
-                data[i - 1][0] = (row != null && row.getCell(0) != null)
+                data[i - 1][0] = row != null && row.getCell(0) != null
                         ? row.getCell(0).toString()
                         : "";
 
-                data[i - 1][1] = (row != null && row.getCell(1) != null)
+                data[i - 1][1] = row != null && row.getCell(1) != null
                         ? row.getCell(1).toString()
+                        : "";
+            }
+
+            return data;
+        }
+    }
+
+    // ==========================
+    // Registration Data
+    // ==========================
+
+    public Object[][] getRegistrationData(String sheetName) throws IOException {
+
+        try (FileInputStream fileInputStream = new FileInputStream(filePath);
+             Workbook workbook = new XSSFWorkbook(fileInputStream)) {
+
+            Sheet sheet = workbook.getSheet(sheetName);
+
+            if (sheet == null) {
+                throw new RuntimeException("Sheet not found: " + sheetName);
+            }
+
+            int rowCount = sheet.getPhysicalNumberOfRows();
+
+            Object[][] data = new Object[rowCount - 1][3];
+
+            for (int i = 1; i < rowCount; i++) {
+
+                Row row = sheet.getRow(i);
+
+                data[i - 1][0] = row != null && row.getCell(0) != null
+                        ? row.getCell(0).toString()
+                        : "";
+
+                data[i - 1][1] = row != null && row.getCell(1) != null
+                        ? row.getCell(1).toString()
+                        : "";
+
+                data[i - 1][2] = row != null && row.getCell(2) != null
+                        ? row.getCell(2).toString()
                         : "";
             }
 

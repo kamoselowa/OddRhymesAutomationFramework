@@ -30,7 +30,7 @@ public class ConfigReader {
     }
     public String getFieldsVerificationExcelName() {
 		
-		return prop.getProperty("FIELDS_VERIFICATION_EXCEL");
+		return prop.getProperty("FIELDS_VERIFICATION_EXCEL").trim();
     }
 
     public Long getGlobalWaitValue() {
