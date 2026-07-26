@@ -10,7 +10,7 @@ import com.automation.basetest.BaseTest;
 public class EmptyPassword extends BaseTest {
 
 
-    // ❌ Empty password
+
 
     @Test(priority = 1, description = "L-03")
     public void EmptyPassword() {
