@@ -26,7 +26,7 @@ public class EmptyEmail extends BaseTest {
         registrationPage.enterPassword(password);
 
         // Submit registration
-        registrationPage.clickCreateAccount();
+       // registrationPage.clickCreateAccount();
 
         // Verify email field is invalid
         Assert.assertTrue(

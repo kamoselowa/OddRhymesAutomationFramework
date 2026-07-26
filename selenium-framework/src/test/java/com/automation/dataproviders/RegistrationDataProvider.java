@@ -14,6 +14,6 @@ public class RegistrationDataProvider {
                 System.getProperty("user.dir")
                         + "/src/test/java/com/automation/Resources/Configurations/Test-Data/Test_Data_Fields_Verification.xlsx");
 
-        return excelReader.getRegistrationData("Registration");
+        return excelReader.getRegistrationData("RegistrationEmptyEmail");
     }
 }
