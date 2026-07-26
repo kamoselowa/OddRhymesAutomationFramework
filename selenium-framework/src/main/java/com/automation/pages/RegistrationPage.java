@@ -13,83 +13,101 @@ public class RegistrationPage extends BasePage {
         super(driver);
     }
 
+    // ==========================
+    // Page Elements
+    // ==========================
+
     @FindBy(how = How.ID, using = "username")
-    WebElement UserNameEntry;
+    private WebElement usernameEntry;
 
     @FindBy(how = How.ID, using = "email")
-    WebElement EMailEntry;
+    private WebElement emailEntry;
 
     @FindBy(how = How.ID, using = "password")
-    WebElement PasswordEntry;
+    private WebElement passwordEntry;
 
-    @FindBy(how = How.XPATH, using = "//span[@class='ng-tns-c712066932-2 ng-star-inserted']")
-    WebElement CreateAccountBtn;
+
+    @FindBy(how = How.XPATH, using = "//button[normalize-space()='Create Account']")
+    private WebElement createAccountButton;
 
     @FindBy(how = How.XPATH, using = "//button[normalize-space()='Sign In']")
-    WebElement SignInBtn;
-
-    // ==========================
-    // Registration Actions
-    // ==========================
-
-    public void enterUserName(String username) {
-        getUserName().sendKeys(username);
-    }
-
-    public void enterEmail(String email) {
-        getEmail().sendKeys(email);
-    }
-
-    public void enterPassword(String password) {
-        getPassWord().sendKeys(password);
-    }
-
-    public void clickCreateAccount() {
-        getCreateBtnElement().click();
-    }
-
-    // Business Method
-    public void registerUser(String username,
-                             String email,
-                             String password) {
-
-        enterUserName(username);
-        enterEmail(email);
-        enterPassword(password);
-        clickCreateAccount();
-    }
+    private WebElement signInButton;
 
     // ==========================
     // Element Getters
     // ==========================
 
-    public WebElement getUserName() {
-        wait. waitForElementVisible(UserNameEntry);
-        return UserNameEntry;
+    public WebElement getUsernameElement() {
+        wait.waitForElementVisible(usernameEntry);
+        return usernameEntry;
     }
 
-    public WebElement getEmail() {
-        wait. waitForElementVisible(EMailEntry);
-        return EMailEntry;
+    public WebElement getEmailElement() {
+        wait.waitForElementVisible(emailEntry);
+        return emailEntry;
     }
 
-    public WebElement getPassWord() {
-        wait. waitForElementVisible(PasswordEntry);
-        return PasswordEntry;
+    public WebElement getPasswordElement() {
+        wait.waitForElementVisible(passwordEntry);
+        return passwordEntry;
     }
 
-    public WebElement getSignIn() {
-        wait. waitForElementVisible(SignInBtn);
-        return SignInBtn;
+    public WebElement getCreateAccountButton() {
+        wait.waitForElementVisible(createAccountButton);
+        wait.WaitForElementToBeClickable(createAccountButton);
+        return createAccountButton;
     }
 
-    public WebElement getCreateBtnElement() {
-        wait. waitForElementVisible(CreateAccountBtn);
-        wait.WaitForElementToBeClickable(CreateAccountBtn);
-        return CreateAccountBtn;
+    public WebElement getSignInButton() {
+        wait.waitForElementVisible(signInButton);
+        wait.WaitForElementToBeClickable(signInButton);
+        return signInButton;
     }
 
-    public void openRegistrationPage() {
-        getCreateBtnElement().click();
+    // ==========================
+    // Page Actions
+    // ==========================
+
+    public void enterUsername(String username) {
+        getUsernameElement().clear();
+        getUsernameElement().sendKeys(username);
+    }
+
+    public void enterEmail(String email) {
+        getEmailElement().clear();
+        getEmailElement().sendKeys(email);
+    }
+
+    public void enterPassword(String password) {
+        getPasswordElement().clear();
+        getPasswordElement().sendKeys(password);
+    }
+
+    public void clickCreateAccount() {
+        getCreateAccountButton().click();
+    }
+
+    public void clickSignIn() {
+        getSignInButton().click();
+    }
+
+    // ==========================
+    // Business Methods
+    // ==========================
+
+    public void registerUser(String username,
+                             String email,
+                             String password) {
+
+        enterUsername(username);
+        enterEmail(email);
+        enterPassword(password);
+        clickCreateAccount();
+    }
+    public boolean isEmailFieldInvalid() {
+
+        String classes = getEmailElement().getAttribute("class");
+
+        return classes.contains("ng-invalid");
     }
 }

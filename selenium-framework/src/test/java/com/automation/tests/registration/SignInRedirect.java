@@ -8,20 +8,10 @@ import org.testng.annotations.Test;
 
 public class SignInRedirect extends BaseTest {
 
-    @BeforeMethod
-    public void RedirectSetup(){
 
-        BaseSetup();
-
-       
-    }
     @Test
-    public void NavigateToNextPage(){
+    public void NavigateToNextPage() {
+       // registrationPage.openRegistrationPage();
 
     }
-    @AfterMethod
-    public void TearDownRedirect(){
-        closeBrowser();
-    }
-
 }

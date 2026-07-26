@@ -1,27 +1,33 @@
 package com.automation.tests.registration;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.automation.basetest.BaseTest;
 
 public class EmptyEmail extends BaseTest {
-     @BeforeMethod
-    public void SetupEmptyEmail(){
-        BaseSetup();
 
-    }
+    @Test(
+            priority = 1,
+            description = "R-02 - Verify user cannot register with an empty email"
+    )
+    public void emptyEmailTest() {
+        registrationPage.clickCreateAccount();
 
-    @Test
-    public void BEFore(){
-        
-    }
+        registrationPage.enterUsername("Kamogelo");
 
-    
-    @AfterMethod
-    public void TearEmptyAcc(){
-        closeBrowser();
+        // Leave email empty
+        registrationPage.enterEmail("");
+
+        registrationPage.enterPassword("Password123!");
+
+        //registrationPage.clickCreateAccount();
+
+        Assert.assertTrue(
+                registrationPage.isEmailFieldInvalid(),
+                "Email field should be marked as invalid."
+        );
+
+        System.out.println("Empty Email Test Passed");
     }
 }
-    
