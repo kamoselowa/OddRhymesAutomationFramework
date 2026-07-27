@@ -1,6 +1,7 @@
 package com.automation.tests.registration;
 
 import com.automation.basetest.BaseTest;
+import com.automation.dataproviders.EmptyPasswordDataProvider;
 import com.automation.dataproviders.RegistrationDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,8 +11,8 @@ public class EmptyPassword extends BaseTest {
     @Test(
             priority = 1,
             description = "R-03 - Verify user cannot register with an empty password",
-            dataProvider = "registrationData",
-            dataProviderClass = RegistrationDataProvider.class
+            dataProvider = "EmptyPasswordDataProvider",
+            dataProviderClass = EmptyPasswordDataProvider.class
     )
     public void emptyPasswordTest(String username,
                                   String email,

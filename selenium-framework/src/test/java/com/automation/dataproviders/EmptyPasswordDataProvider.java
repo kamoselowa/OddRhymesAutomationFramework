@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class EmptyPasswordDataProvider {
 
-    @DataProvider(name = "registrationData")
+    @DataProvider(name = "EmptyPasswordDataProvider")
     public Object[][] registrationData() throws IOException {
 
         ExcelReader excelReader = new ExcelReader(
