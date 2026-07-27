@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class ExistingEmail extends BaseTest{
 @Test
     public  void existingEmail(){
-    
+
 }
 
 }
