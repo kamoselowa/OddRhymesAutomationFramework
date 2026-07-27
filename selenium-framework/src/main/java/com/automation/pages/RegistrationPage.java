@@ -116,4 +116,8 @@ public class RegistrationPage extends BasePage {
 
         return classes.contains("ng-invalid");
     }
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+
 }
