@@ -112,7 +112,7 @@ public class RegistrationPage extends BasePage {
     }
     public boolean isPasswordFieldInvalid() {
 
-        String classes = getEmailElement().getAttribute("class");
+        String classes = getPasswordElement().getAttribute("class");
 
         return classes.contains("ng-invalid");
     }
