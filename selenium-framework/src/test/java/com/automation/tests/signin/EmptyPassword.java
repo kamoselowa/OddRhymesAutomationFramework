@@ -19,11 +19,11 @@ public class EmptyPassword extends BaseTest {
         // Click sign in without entering email
         signInPage.clickSignIn();
 
-        // ✅ ASSERT error is shown
+        //  ASSERT error is shown
         Assert.assertTrue(signInPage.isEmailErrorDisplayed(),
                 "Email error message is not displayed");
 
-        // ✅ ASSERT correct message
+        // ASSERT correct message
         Assert.assertEquals(signInPage.getEmailErrorMessage(),
                 "Please fill in both fields.",
                 "Incorrect error message");
