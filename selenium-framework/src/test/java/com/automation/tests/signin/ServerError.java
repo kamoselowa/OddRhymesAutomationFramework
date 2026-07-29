@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 import com.automation.basetest.BaseTest;
 
 public class ServerError extends BaseTest {
-    @BeforeMethod
+  @Test
     public void ServerErrorSetup(){
         BaseSetup();
     }
