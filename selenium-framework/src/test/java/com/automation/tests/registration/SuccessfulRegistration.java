@@ -9,10 +9,7 @@ import com.automation.pages.RegistrationPage;
 import org.testng.annotations.Test;
 
 public class SuccessfulRegistration extends BaseTest{
-    @BeforeMethod
-    public void SetupCorrectReg(){
-        BaseSetup();
-    }
+
 
     @Test(dataProvider = "registrationData")
 public void ValidRegistrationTest(
@@ -27,9 +24,5 @@ public void ValidRegistrationTest(
             password);
 }
 
-    @AfterMethod
-    public void TearDownReg(){
 
-        closeBrowser();
-    }
 }
