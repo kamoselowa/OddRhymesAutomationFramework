@@ -1,115 +1,189 @@
-# OddRhymes.com
+# OddRhymes Automation Framework
 
-**Bars Beyond the Metaverse**
+Selenium WebDriver + TestNG automation framework built from scratch to test **OddRhymes.com**.
 
-A dedicated online community for rappers, lyricists, poets, and spoken-word artists.
+**Target App:** [https://oddrhymes.com](https://oddrhymes.com)  
+**Author:** Kamogelo Selowa ([@kamoselowa](https://github.com/kamoselowa))  
+**Status:** Active Development
+
+---
 
 ## About the Project
 
-OddRhymes is a creative hub where artists can:
-- Share original verses and poems
-- Participate in rap battles
-- Go live for freestyles, cyphers, and performances
-- Connect, collaborate, and grow with like-minded creators
+This framework automates critical user flows of OddRhymes — a creative platform for rappers, lyricists, poets, and spoken-word artists.
 
-Built for the culture — from Johannesburg to the metaverse and beyond.
+**OddRhymes features:**
+- Verse & poetry sharing
+- Text-based and live rap battles
+- Live audio/video sessions
+- Community feed and artist profiles
+- Notifications and dark mode
 
-**Current Status:** Early / Testing Phase (April 2026)
+The goal of this framework is to find defects, reduce manual testing effort, and keep growing as the platform expands.
 
-## Features
+---
 
-- **Verse Sharing** — Post and showcase your rhymes and poetry
-- **Rap Battles** — Text-based and live battles
-- **Live Sessions** — Audio/video rooms for real-time performances
-- **Community Feed** — Discover fresh content from other artists
-- **Profile System** — Customize your artist page and build your network
-- **Notifications** — Stay updated on replies, battles, and live invites
-- **Dark Mode** — Easy on the eyes for late-night writing sessions
+## Tech Stack
 
-## Quick Start
+| Technology           | Version   | Purpose                        |
+|----------------------|-----------|--------------------------------|
+| Java                 | 17        | Programming language           |
+| Selenium WebDriver   | 4.43.0    | Browser automation             |
+| TestNG               | 7.12.0    | Test framework                 |
+| Maven                | -         | Build tool                     |
+| Apache POI           | 5.5.0     | Excel data-driven testing      |
+| WebDriverManager     | 5.8.0     | Driver management              |
+| Log4j                | 2.23.1    | Logging                        |
 
-### 1. Create an Account
-1. Go to [https://oddrhymes.com](https://oddrhymes.com)
-2. Click **"Create Account"**
-3. Enter your email and choose a strong password
-4. Verify your email (if prompted)
+**Supported Browsers:** Chrome (default), Firefox, Edge
 
-### 2. Sign In
-- Use your email and password on the login page
-- Forgot your password? Use the recovery link
+---
 
-### 3. Start Creating
-- Post your first verse
-- Browse the feed
-- Join or create a battle
-- Go live and spit bars
+## Project Structure
 
-## Testing Guide
+```
+OddRhymesAutomationFramework/
+└── selenium-framework/
+    ├── pom.xml
+    ├── src/
+    │   ├── main/java/com/automation/
+    │   │   ├── base/               → BasePage.java
+    │   │   ├── pages/              → RegistrationPage.java, SignInPage.java
+    │   │   └── utils/              → ConfigReader.java, Customwait.java
+    │   │
+    │   └── test/java/com/automation/
+    │       ├── basetest/           → BaseTest.java
+    │       ├── dataproviders/      → Data providers for TestNG
+    │       ├── testdatareaders/    → ExcelReader.java
+    │       ├── tests/
+    │       │   ├── registration/   → Registration test cases
+    │       │   └── signin/         → Sign-in test cases
+    │       └── Resources/
+    │           └── Configurations/
+    │               ├── config.properties
+    │               └── Test-Data/  → Excel files
+    │
+    └── Test-Plan/
+        └── test plan.pdf
+```
 
-Use this checklist while exploring the platform:
+---
 
-### Core Testing
-- [ ] Account creation and email verification
-- [ ] Login / Logout flow
-- [ ] Posting a verse (test short + long text, emojis, line breaks)
-- [ ] Liking, commenting, and interacting with posts
-- [ ] Profile editing (bio, avatar, links)
-- [ ] Discovering other users
+## Prerequisites
 
-### Advanced Features
-- [ ] Joining or starting a rap battle
-- [ ] Starting or joining a Live session (audio/video quality)
-- [ ] Notifications (in-app and push)
-- [ ] Dark/Light mode switching
-- [ ] Mobile responsiveness (phone + tablet)
+- Java 17 or higher
+- Maven 3.8+
+- Git
+- Chrome / Firefox / Edge browser
 
-### Bug Hunting
-- Check loading speed on different networks
-- Test with special characters and long verses
-- Try accessing from multiple devices/browsers
-- Note any UI glitches, broken buttons, or slow responses
+---
 
-## How to Contribute / Report Issues
+## Getting Started
 
-Found a bug or have feedback?
-- Describe the issue clearly
-- Include steps to reproduce
-- Mention your device, browser, and OS
-- Add screenshots or screen recordings if possible
+### 1. Clone the Repository
+```bash
+git clone https://github.com/kamoselowa/OddRhymesAutomationFramework.git
+cd OddRhymesAutomationFramework/selenium-framework
+```
 
-Suggestions for new features (e.g. beat sharing, rhyme tools, tournaments) are also welcome.
+### 2. Configure
+Edit the file:
+`src/test/java/com/automation/Resources/Configurations/config.properties`
 
-## Links
+```properties
+URL = https://oddrhymes.com
+BROWSER = Chrome
+GLOBALWAIT = 60
+FIELDS_VERIFICATION_EXCEL = Test_Data_Fields_Verification.xlsx
+```
 
-- **Website:** [https://oddrhymes.com](https://oddrhymes.com)
-- **About Page:** [https://oddrhymes.com/about](https://oddrhymes.com/about)
-- **Login:** [https://oddrhymes.com/login](https://oddrhymes.com/login)
+### 3. Install Dependencies
+```bash
+mvn clean install -DskipTests
+```
 
-## Community Guidelines (Coming Soon)
+### 4. Run Tests
+```bash
+# Run all tests
+mvn test
 
-Respect the craft. No hate, no spam, keep the energy positive and competitive.
+# Run specific test class
+mvn test -Dtest=ValidLogin
+```
+
+---
+
+## Current Test Coverage
+
+### Sign-In Module
+- Valid Login
+- Empty Email / Empty Password
+- Invalid Credentials
+- Forgot Password
+- Create Account redirect
+- Page Title & Element verification
+- Server Error scenarios
+
+### Registration Module
+- Successful Registration
+- Empty Email / Empty Password
+- Invalid Email Format
+- Existing Email
+- Weak Password
+- Sign-In redirect
+- Server Error scenarios
+
+> More modules (Feed, Battles, Live Sessions, Profile) are planned.
+
+---
+
+## Design Patterns Used
+
+- **Page Object Model (POM)**
+- **BaseTest + BasePage** for setup/teardown and driver management
+- **Custom Explicit Waits** (`Customwait`)
+- **Data-Driven Testing** using Excel + TestNG DataProviders
+- **Externalized Configuration** via `config.properties`
+
+---
+
+## Known Findings
+
+The framework has already helped uncover real application defects, including:
+
+- Weak passwords are currently accepted during registration
+
+---
+
+## Future Improvements
+
+- [ ] Page Objects for Feed, Profile, Battles, and Live features
+- [ ] Proper Log4j implementation
+- [ ] ExtentReports / Allure reporting
+- [ ] Parallel execution support
+- [ ] Cross-browser execution via TestNG XML
+- [ ] CI/CD integration (GitHub Actions)
+- [ ] Screenshot on failure
+- [ ] Selenium Grid support
+
+---
+
+## Test Plan
+
+A formal test plan is available at:
+
+`src/Test-Plan/test plan.pdf`
+
+---
+
+## Author
+
+**Kamogelo Selowa**  
+GitHub: [@kamoselowa](https://github.com/kamoselowa)
+
+Built for the culture — from Johannesburg to the metaverse.
 
 ---
 
 **Made for the bars. Built for the culture.**
-
----
-
-**Want me to customize this README further?**
-
-I can add:
-- A "Sample Verse" section for testing
-- Detailed feature descriptions
-- Contributor guidelines
-- Screenshots placeholders
-- Or make it more technical (if this is for developers)
-
-Just say what you need — for example:
-- "Make it shorter"
-- "Add a section for battle rules"
-- "Turn it into Notion format"
-- Or "Include some fire testing bars"
-
-Drop your thoughts after you test it. I'm ready to help you spit or document more 🔥
-
-(Jozi stand up — let's make this platform hold weight!)
+```
