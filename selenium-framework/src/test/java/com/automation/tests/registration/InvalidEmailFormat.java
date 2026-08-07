@@ -7,18 +7,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
  public class InvalidEmailFormat extends BaseTest{
-    @BeforeMethod
-    public void InvalidFormatSetup(){
-        BaseSetup();
 
-
-
-    }
     @Test
+     public void InvalidFormat(){
 
-    @AfterMethod
-    public void TearDownInvalidAcc(){
-        closeBrowser();
     }
+
+
 
 }
