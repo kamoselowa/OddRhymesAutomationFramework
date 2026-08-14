@@ -1,28 +1,26 @@
 package com.automation.tests.registration;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-
 import com.automation.basetest.BaseTest;
-import com.automation.pages.RegistrationPage;
-
+import com.automation.dataproviders.RegistrationDataProvider;
 import org.testng.annotations.Test;
 
-public class SuccessfulRegistration extends BaseTest{
+public class SuccessfulRegistration extends BaseTest {
 
+    @Test(
+            dataProvider = "registrationData",
+            dataProviderClass = RegistrationDataProvider.class
+    )
+    public void ValidRegistrationTest(
+            String firstName,
+            String email,
+            String password) {
 
-    @Test(dataProvider = "registrationData")
-public void ValidRegistrationTest(
-        String firstName,
-        String email,
-        String password) {
-    registrationPage.clickCreateAccount();
+        registrationPage.clickCreateAccount();
 
-    registrationPage.registerUser(
-            firstName,
-            email,
-            password);
-}
-
-
+        registrationPage.registerUser(
+                firstName,
+                email,
+                password
+        );
+    }
 }
