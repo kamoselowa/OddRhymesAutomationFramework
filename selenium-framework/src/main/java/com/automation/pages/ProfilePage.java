@@ -13,6 +13,6 @@ public class ProfilePage extends BasePage {
     }
     //========Page Elements========
 
-    @FindBy(how = How.XPATH, using = "");
-    private WebElement
+    @FindBy(how = How.XPATH, using = "//div[@class='profile-header text-center mb-5 ng-tns-c4284522105-3 ng-trigger ng-trigger-profileEnter ng-star-inserted']")
+    private WebElement ProfileSection;
 }
