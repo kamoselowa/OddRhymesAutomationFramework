@@ -17,6 +17,11 @@ public class ProfilePage extends BasePage {
     private WebElement ProfileSection;
 
     public WebElement getProfile(){
+        wait.waitForElementVisible(ProfileSection);
       return ProfileSection;
+    }
+
+    public void Profileisdisplayed(){
+        getProfile().isDisplayed();
     }
 }
