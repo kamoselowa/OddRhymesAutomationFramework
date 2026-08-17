@@ -2,6 +2,8 @@ package com.automation.tests.registration;
 
 import com.automation.basetest.BaseTest;
 import com.automation.dataproviders.RegistrationDataProvider;
+import com.automation.pages.ProfilePage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SuccessfulRegistration extends BaseTest {
@@ -22,5 +24,10 @@ public class SuccessfulRegistration extends BaseTest {
                 email,
                 password
         );
+        ProfilePage profilePage = new ProfilePage(driver);
+
+        profilePage.Profileisdisplayed();
+
+        Assert.assertTrue(wait.waitForUrlContains("https://oddrhymes.com/profile/"));
     }
 }
