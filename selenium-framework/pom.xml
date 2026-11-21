@@ -81,8 +81,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
+                    <failIfNoTests>true</failIfNoTests>
                     <includes>
-                        <include>**/*Test.java</include>
+                        <include>**/tests/**/*.java</include>
                     </includes>
                 </configuration>
             </plugin>

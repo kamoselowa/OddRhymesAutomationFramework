@@ -53,7 +53,6 @@ Replace `ValidLogin` with the test class name, without `.java`, for another
 test. `ServerError` uses Chrome-specific DevTools commands and therefore
 requires `BROWSER=Chrome`.
 
-The Maven Surefire configuration currently includes files matching
-`**/*Test.java` by default, while the test classes in this catalog do not end
-in `Test`. Use the explicit `-Dtest=ClassName` command above to run an
-individual class.
+Maven Surefire is configured to discover Java classes under the `tests/`
+package, so `mvn verify` runs these test classes in CI. Use the explicit
+`-Dtest=ClassName` command above to run an individual class locally.
