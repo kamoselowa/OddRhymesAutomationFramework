@@ -42,10 +42,10 @@ jobs:
           path: selenium-framework/target/selenium-framework-*.jar
           if-no-files-found: error
 
-      - name: Upload test reports
+     - name: Upload test reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: target/gh-action-upload-artifact@v1
         with:
-          name: surefire-reports
-          path: selenium-framework/target/surefire-reports/
+          name: extent-reports
+          path: selenium-framework/target/extent-reports/
           if-no-files-found: ignore
