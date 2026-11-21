@@ -10,7 +10,10 @@ import com.automation.pages.SignInPage;
 public class ForgotPassword extends BaseTest {
 
 
-    @Test
+    @Test(
+            priority = 1,
+            description = "TC - L-06 - Forgot Password Link Test"
+    )
     public void ClickLink() {
         signInPage.clickForgotPassword();
 

@@ -10,7 +10,8 @@ import com.automation.pages.SignInPage;
 
 public class EmptyEmail extends BaseTest {
 
-    @Test(priority = 1, description = "L-02")
+    @Test(priority = 1,
+         description = "L-02")
     public void EmptyEmailError() {
 
         signInPage.enterPassword("");

@@ -14,7 +14,10 @@ public class CreateAccountClick extends BaseTest{
 
 
 
-    @Test
+    @Test(
+            priority = 1,
+            description = "TC - L-07 - Create Account Button Test"
+    )
     public void CreateAccountButton(){
 
         SignInPage Click = new SignInPage(driver);
