@@ -46,6 +46,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: surefire-reports
-          path: selenium-framework/target/surefire-reports/
-          if-no-files-found: ignore
+          name: extent-reports
+          path: selenium-framework/target/extent-reports/
+          if-no-files-found: error

@@ -4,16 +4,19 @@ import com.automation.utils.Customwait;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 
 import com.automation.base.BasePage;
 import com.automation.pages.RegistrationPage;
 import com.automation.pages.SignInPage;
 import com.automation.testdatareaders.ExcelReader;
 import com.automation.utils.ConfigReader;
+import com.automation.listeners.ExtentTestListener;
 
 import java.time.Duration;
 
 
+@Listeners(ExtentTestListener.class)
 public class BaseTest {
 
     public BasePage basePage;
@@ -29,7 +32,7 @@ public class BaseTest {
 
         configReader = new ConfigReader();
 
-        basePage = new BasePage(driver);
+        basePage = new BasePage(null);
         driver = basePage.getDriver(configReader.getBrowser());
 
         // THIS MUST BE HERE
