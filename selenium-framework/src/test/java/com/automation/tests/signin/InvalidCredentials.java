@@ -15,7 +15,7 @@ public class InvalidCredentials extends BaseTest {
 
     @Test(
             priority = 1,
-            description = "L-02 - Verify user cannot login with invalid credentials",
+            description = "TC - L-04 - Invalid Login Test",
             dataProvider = "loginData",
             dataProviderClass = InvalidLoginTestDataProvider.class
     )

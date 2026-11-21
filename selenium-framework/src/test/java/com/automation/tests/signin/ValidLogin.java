@@ -16,7 +16,7 @@ public class ValidLogin extends BaseTest {
 
 @Test(
         priority = 1,
-        description = "L-01",
+        description = "TC - L-01 - Valid Login Test",
         dataProvider = "loginData",
         dataProviderClass = ValidLoginTestDataProvider.class
 )
