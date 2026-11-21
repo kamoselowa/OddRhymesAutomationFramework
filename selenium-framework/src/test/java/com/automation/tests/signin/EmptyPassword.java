@@ -12,7 +12,8 @@ public class EmptyPassword extends BaseTest {
 
 
 
-    @Test(priority = 1, description = "L-03")
+    @Test(priority = 1,
+         description = "L-03")
     public void EmptyPassword() {
         signInPage.enterEmail("");
         ;

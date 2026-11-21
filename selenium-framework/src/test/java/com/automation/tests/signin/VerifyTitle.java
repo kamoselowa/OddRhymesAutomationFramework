@@ -13,7 +13,10 @@ import com.automation.pages.SignInPage;
 public class VerifyTitle extends BaseTest {
 
 
-    @Test(priority = 3)
+    @Test(
+            description = "Verify the title of the page",
+            groups = {"smoke", "regression"}
+    )
     public void verifyTitle() {
         Assert.assertTrue(signInPage.isPageLoaded(),
                 "Page title is not displayed");
