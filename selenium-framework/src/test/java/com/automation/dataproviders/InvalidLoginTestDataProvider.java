@@ -14,7 +14,14 @@ public class InvalidLoginTestDataProvider {
                 System.getProperty("user.dir")
                         + "/src/test/java/com/automation/Resources/Configurations/Test-Data/Test_Data_Fields_Verification.xlsx");
 
-        return excelReader.getLoginData("Login");
+        Object[][] loginData = excelReader.getLoginData("Login");
+        int testDataRowNumber = 3;
+
+        if (loginData.length < testDataRowNumber) {
+            throw new IllegalStateException(
+                    "Expected at least " + testDataRowNumber + " login data rows, found " + loginData.length);
+        }
+
+        return new Object[][] { loginData[testDataRowNumber - 1] };
     }
 }
-

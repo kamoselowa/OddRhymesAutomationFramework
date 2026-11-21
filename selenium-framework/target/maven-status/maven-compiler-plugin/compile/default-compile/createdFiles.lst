@@ -1,0 +1,6 @@
+com\automation\base\BasePage.class
+com\automation\pages\SignInPage.class
+com\automation\utils\Customwait.class
+com\automation\utils\ConfigReader.class
+com\automation\pages\ProfilePage.class
+com\automation\pages\RegistrationPage.class

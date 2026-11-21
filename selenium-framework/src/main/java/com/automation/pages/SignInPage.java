@@ -42,7 +42,7 @@ public class SignInPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//div[contains(@class,'quote')]")
     WebElement quoteText;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(@class,'error-message')]")
+    @FindBy(how = How.XPATH, using = "//div[contains(@class,'error-message') and normalize-space()='Please fill in both fields.']")
     WebElement EmailerrorMessage;
 
     // ===== PAGE VALIDATION =====
