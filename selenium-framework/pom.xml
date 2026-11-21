@@ -14,9 +14,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- Updated Java version -->
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>25</maven.compiler.release>
     </properties>
 
     <dependencies>
@@ -65,15 +63,16 @@
             <!-- Compiler plugin -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.16.0</version>
             </plugin>
 
             <!-- Surefire plugin for running TestNG tests -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.6.1</version>
                 <configuration>
                     <includes>
+                        <include>**/tests/**/*.java</include>
                         <include>**/*Test.java</include>
                     </includes>
                 </configuration>
